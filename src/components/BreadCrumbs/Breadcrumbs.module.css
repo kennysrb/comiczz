@@ -1,0 +1,10 @@
+.Breadcrumbs {
+  background-color: #000;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.Link:hover {
+  cursor: pointer;
+}
