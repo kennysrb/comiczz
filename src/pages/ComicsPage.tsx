@@ -4,16 +4,18 @@ import styles from "./ComicsPage.module.css";
 import { ComicCard } from "../components/ComicCard/ComicCard";
 import { Comic } from "../types/types";
 import Spinner from "../components/Spinner/Spinner";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 export const ComicsPage = ({ format }: { format: string }) => {
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
 
   const loadComics = useCallback(async () => {
     setLoading(true);
-    const data = await fetchComics(format, 20, offset);
-    setComics((prev) => [...prev, ...data]);
+    const { results, total } = await fetchComics(format, 20, offset);
+    setComics((prev) => [...prev, ...results]);
+    setHasMore(offset + 20 < total);
     setLoading(false);
   }, [format, offset]);
 
@@ -26,38 +28,76 @@ export const ComicsPage = ({ format }: { format: string }) => {
     loadComics();
   }, [offset, format, loadComics]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const nearBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
+  //UNCOMMENT FOLLOWING CODE FOR CUSTOM INFINTE SCROLL
+  //   useEffect(() => {
+  //     const handleScroll = () => {
+  //       const nearBottom =
+  //         window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
 
-      if (nearBottom && !loading) {
-        setOffset((prev) => prev + 20);
-      }
-    };
+  //       if (nearBottom && !loading) {
+  //         setOffset((prev) => prev + 20);
+  //       }
+  //     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading]);
+  //     window.addEventListener("scroll", handleScroll);
+  //     return () => window.removeEventListener("scroll", handleScroll);
+  //   }, [loading]);
 
   return (
+    //CUSTOM INFINTE SCROLL CODE
+
+    // <div className={styles.PageWrapper}>
+    //   <div className={styles.Grid}>
+    //     {comics.map((comic) => (
+    //       <ComicCard key={comic.id} comic={comic} />
+    //     ))}
+    //   </div>
+
+    //   {loading && (
+    //     <div className={styles.LoadingWrapper}>
+    //       <Spinner />
+    //       <h3 className={styles.LoadingText}>Loading...</h3>
+    //     </div>
+    //   )}
+
+    //   {!loading && (
+    //     <div className={styles.LoadMoreWrapper}>
+    //       <button
+    //         className={styles.LoadMoreBtn}
+    //         onClick={() => setOffset((prev) => prev + 20)}
+    //       >
+    //         Load More
+    //       </button>
+    //     </div>
+    //   )}
+    // </div>
+
+    //LIBRARY INFINTE SCROLL
+
     <div className={styles.PageWrapper}>
-      <div className={styles.Grid}>
-        {comics.map((comic) => (
-          <ComicCard key={comic.id} comic={comic} />
-        ))}
-      </div>
-
-      {loading && (
-        <div className={styles.LoadingWrapper}>
-          <Spinner />
-          <h3 className={styles.LoadingText}>Loading...</h3>
+      <InfiniteScroll
+        dataLength={comics.length}
+        next={() => setOffset((prev) => prev + 20)}
+        hasMore={hasMore}
+        loader={
+          <div className={styles.LoadingWrapper}>
+            <Spinner />
+            <h3 className={styles.LoadingText}>Loading...</h3>
+          </div>
+        }
+      >
+        <div className={styles.Grid}>
+          {comics.map((comic) => (
+            <ComicCard key={comic.id} comic={comic} />
+          ))}
         </div>
-      )}
-
+      </InfiniteScroll>
       {!loading && (
-        <div className={styles.LoadMore}>
-          <button onClick={() => setOffset((prev) => prev + 20)}>
+        <div className={styles.LoadMoreWrapper}>
+          <button
+            className={styles.LoadMoreBtn}
+            onClick={() => setOffset((prev) => prev + 20)}
+          >
             Load More
           </button>
         </div>

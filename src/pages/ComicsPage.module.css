@@ -13,10 +13,11 @@
   padding: 1.5rem 3rem;
 }
 .LoadingWrapper {
-  position: absolute;
+  /* COMMENT OUT FOR CUSTOM INFINITE SCROLL */
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,4 +30,25 @@
   font-weight: bold;
   margin: 0;
   text-align: center;
+}
+
+.LoadMoreWrapper {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.LoadMoreBtn {
+  width: 150px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: red;
+  color: #fff;
+}
+
+.LoadMoreBtn:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { MarvelApiResponse } from "../types/marvelApiTypes";
 
 const publicKey = "826935b16b194edd3c1ddddc70a2f805";
 
@@ -15,15 +16,21 @@ export const fetchComics = async (
   offset: number = 0
 ) => {
   try {
-    const res = await API.get("/comics", {
+    const res = await API.get<MarvelApiResponse>("/comics", {
       params: {
         limit,
         offset,
         ...(format !== "All" && { format }),
       },
     });
-    return res.data.data.results;
+    return res.data.data;
   } catch (err) {
-    return [];
+    return {
+      offset: 0,
+      limit: 0,
+      total: 0,
+      count: 0,
+      results: [],
+    };
   }
 };
