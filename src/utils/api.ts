@@ -11,12 +11,14 @@ export const API = axios.create({
 
 export const fetchComics = async (
   format: string = "All",
-  limit: number = 20
+  limit: number = 20,
+  offset: number = 0
 ) => {
   try {
     const res = await API.get("/comics", {
       params: {
         limit,
+        offset,
         ...(format !== "All" && { format }),
       },
     });
