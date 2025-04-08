@@ -1,0 +1,32 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.Card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.Title {
+  text-align: center;
+  margin-bottom: 0;
+}
+.PriceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Button {
+  width: 120px;
+  border-radius: 5px;
+  background-color: red;
+  color: #fff;
+}

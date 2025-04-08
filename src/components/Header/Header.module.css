@@ -1,0 +1,19 @@
+.Header {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #414141;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.Active {
+  border-bottom: 2px solid red;
+}

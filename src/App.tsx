@@ -1,7 +1,7 @@
-import "./App.css";
+import { ComicsPage } from "./pages/ComicsPage";
 
 function App() {
-  return <div className="App"></div>;
+  return <ComicsPage />;
 }
 
 export default App;
