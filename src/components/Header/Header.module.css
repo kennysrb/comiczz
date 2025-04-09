@@ -2,7 +2,8 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  background-color: #414141;
+  background-color: #333;
+  opacity: 0.8;
   position: sticky;
   top: 0;
   z-index: 1000;
