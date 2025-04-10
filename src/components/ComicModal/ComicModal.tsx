@@ -1,10 +1,11 @@
-import { Comic, Price } from "../../types/types";
+import { Comic } from "../../types/types";
 import styles from "./ComicModal.module.css";
 import ComicDetailList from "./components/List/List";
 import RowInfo from "./components/RowInfo/RowInfo";
 import { useEffect } from "react";
 import closeIcon from "../../assets/icons/closeIcon.png";
 import Button from "../Button/Button";
+import { getLowestPrice } from "../../utils/helpers";
 
 type ComicModalProps = {
   comic: Comic;
@@ -19,10 +20,7 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
     };
   }, []);
 
-  const price =
-    comic.prices.length > 0
-      ? Math.min(...comic.prices.map((p: Price) => p.price))
-      : "N/A";
+  const price = getLowestPrice(comic.prices);
 
   const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
@@ -57,7 +55,7 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
             <ComicDetailList label="Creators" items={comic.creators.items} />
           )}
           <RowInfo label="Diamond Code" value={comic.diamondCode || "N/A"} />
-          <p className={styles.Price}>{price}</p>
+          <p className={styles.Price}>{price} €</p>
         </div>
         <div className={styles.BtnWrapper}>
           <Button label="Close" clickHandler={onClose} />
