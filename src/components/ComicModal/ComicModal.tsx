@@ -2,6 +2,7 @@ import { Comic } from "../../types/types";
 import styles from "./ComicModal.module.css";
 import ComicDetailList from "./components/List/List";
 import RowInfo from "./components/RowInfo/RowInfo";
+import { useEffect } from "react";
 
 type ComicModalProps = {
   comic: Comic;
@@ -9,10 +10,17 @@ type ComicModalProps = {
 };
 
 const ComicModal = ({ comic, onClose }: ComicModalProps) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
     <div className={styles.ModalOverlay} onClick={onClose}>
-      <div className={styles.ModalWrapper}>
+      <div className={styles.ModalWrapper} onClick={(e) => e.stopPropagation()}>
         <button className={styles.CloseButton} onClick={onClose}>
           X
         </button>
