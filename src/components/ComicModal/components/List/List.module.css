@@ -1,0 +1,12 @@
+.ListWrapper {
+  margin: 15px 0;
+}
+.List {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  row-gap: 1px;
+  padding: 0;
+  margin-top: 5px;
+}

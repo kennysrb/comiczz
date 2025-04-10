@@ -1,6 +1,7 @@
-import React from "react";
 import { Comic } from "../../types/types";
 import styles from "./ComicModal.module.css";
+import ComicDetailList from "./components/List/List";
+import RowInfo from "./components/RowInfo/RowInfo";
 
 type ComicModalProps = {
   comic: Comic;
@@ -20,44 +21,23 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
           <img src={thumbnail} alt={comic.title} />
         </div>
         <div className={styles.ModalContent}>
-          <p className={styles.RowInfo}>
-            <strong>Title:</strong> {comic.title}
-          </p>
-          <p className={styles.RowInfo}>
-            <strong>Release Date:</strong>{" "}
-            {comic.dates.find((d) => d.type === "focDate")?.date || "N/A"}
-          </p>
-          <p className={styles.RowInfo}>
-            <strong>Format:</strong> {comic.format || "N/A"}
-          </p>
-          <p className={styles.RowInfo}>
-            <strong>Pages:</strong> {comic.pageCount || "N/A"}
-          </p>
+          <RowInfo label="Title" value={comic.title} />
+          <RowInfo
+            label="Release Date"
+            value={comic.dates.find((d) => d.type === "focDate")?.date || "N/A"}
+          />
+          <RowInfo label="Format" value={comic.format || "N/A"} />
+          <RowInfo label="Pages" value={comic.pageCount || "N/A"} />
           {comic.characters.items.length > 0 && (
-            <div className={styles.ListWrapper}>
-              <strong>Characters:</strong>
-              <ul className={styles.List}>
-                {comic.characters.items.map((char, idx) => (
-                  <li key={idx}>{char.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ComicDetailList
+              label="Characters"
+              items={comic.characters.items}
+            />
           )}
-          {comic.creators.items.length > 0 && (
-            <div className={styles.ListWrapper}>
-              <strong>Creators:</strong>
-              <ul className={styles.List}>
-                {comic.creators.items.map((creator, idx) => (
-                  <li key={idx}>
-                    {creator.name} – {creator.role}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {comic.creators.items.length && (
+            <ComicDetailList label="Creators" items={comic.creators.items} />
           )}
-          <p className={styles.RowInfo}>
-            <strong>Diamond Code:</strong> {comic.diamondCode || "N/A"}
-          </p>
+          <RowInfo label="Diamond Code" value={comic.diamondCode || "N/A"} />
         </div>
       </div>
     </div>
