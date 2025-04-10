@@ -5,12 +5,15 @@ import { Breadcrumbs } from "./components/BreadCrumbs/Breadcrumbs";
 
 function App() {
   const [format, setFormat] = useState<string>("All");
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <>
       <Header selectedFormat={format} onSelectFormat={setFormat} />
-      <Breadcrumbs format={format} onHomeClick={() => setFormat("All")} />
-      <ComicsPage format={format} />
+      {!loading && (
+        <Breadcrumbs format={format} onHomeClick={() => setFormat("All")} />
+      )}
+      <ComicsPage format={format} loading={loading} setLoading={setLoading} />
     </>
   );
 }

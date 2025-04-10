@@ -7,9 +7,16 @@ import Spinner from "../components/Spinner/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ComicModal from "../components/ComicModal/ComicModal";
 
-export const ComicsPage = ({ format }: { format: string }) => {
+export const ComicsPage = ({
+  format,
+  loading,
+  setLoading,
+}: {
+  format: string;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+}) => {
   const [comics, setComics] = useState<Comic[]>([]);
-  const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
@@ -19,7 +26,7 @@ export const ComicsPage = ({ format }: { format: string }) => {
     setComics((prev) => [...prev, ...results]);
     setHasMore(offset + 20 < total);
     setLoading(false);
-  }, [format, offset]);
+  }, [format, offset, setLoading]);
 
   useEffect(() => {
     setComics([]);
