@@ -8,10 +8,11 @@
 }
 
 .Grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 2rem;
-  padding: 1.5rem 3rem;
+  padding-top: 1.2rem;
   min-height: 40vh;
 }
 .LoadingWrapper {
