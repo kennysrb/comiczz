@@ -16,12 +16,17 @@ export const ComicCard = ({ comic, onMoreInfo }: ComicCardProps) => {
   return (
     <div className={styles.Card}>
       <img src={thumbnail} alt={comic.title} />
-      <div className={styles.PriceWrapper}>
+      <div className={styles.ComicDetails}>
         <p className={styles.Title}>{comic.title}</p>
-        <p className={styles.Price}>Price: ${price}</p>
-        <button className={styles.Button} onClick={() => onMoreInfo(comic.id)}>
-          More Info
-        </button>
+        <div className={styles.PriceWrapper}>
+          <p className={styles.Price}>Price: ${price}</p>
+          <button
+            className={styles.Button}
+            onClick={() => onMoreInfo(comic.id)}
+          >
+            More Info
+          </button>
+        </div>
       </div>
     </div>
   );

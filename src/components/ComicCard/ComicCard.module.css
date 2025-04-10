@@ -31,11 +31,12 @@
   text-overflow: ellipsis;
 }
 
-.PriceWrapper {
+.ComicDetails {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  min-height: 120px;
 }
 
 .Price {
