@@ -17,6 +17,9 @@
   border-radius: 4px;
 }
 .Title {
+  font-size: 0.9rem;
+  line-height: 1.1rem;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 0;
   text-align: center;
@@ -41,8 +44,10 @@
 
 .Price {
   text-align: center;
+  font-weight: bold;
   color: #1d1d1d;
-  font-size: 19px;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
   opacity: 1;
   margin-bottom: 9px;
 }

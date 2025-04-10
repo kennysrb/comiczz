@@ -28,6 +28,7 @@ button {
   cursor: pointer;
   font-weight: bold;
   color: #fff;
+  font-size: 1.1rem;
 }
 
 .Active {

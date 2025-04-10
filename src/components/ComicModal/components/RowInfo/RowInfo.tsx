@@ -8,7 +8,7 @@ type RowInfoProps = {
 const RowInfo = ({ label, value }: RowInfoProps) => {
   return (
     <p className={styles.RowInfo}>
-      <strong>{label}:</strong> {value}
+      <span className={styles.Label}>{label}:</span> {value}
     </p>
   );
 };
