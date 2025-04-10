@@ -1,5 +1,6 @@
 .PageWrapper {
   background-color: #000;
+  background-color: var(--main-background);
   padding: 0;
   width: 100%;
   min-height: calc(100vh - 98px);
@@ -27,7 +28,7 @@
 }
 
 .LoadingText {
-  color: #fff;
+  color: var(--text-color);
   font-weight: bold;
   margin: 0;
   text-align: center;

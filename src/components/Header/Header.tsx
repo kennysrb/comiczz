@@ -9,8 +9,20 @@ type Props = {
 const formats = ["All", "Comic", "Magazine", "Hardcover", "Digest"];
 
 export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "dark"
+  );
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +46,9 @@ export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
           {format}
         </button>
       ))}
+      <button onClick={toggleTheme} className={styles.ThemeToggle}>
+        {theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"}
+      </button>
     </header>
   );
 };

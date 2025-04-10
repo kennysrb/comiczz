@@ -27,3 +27,8 @@ button {
   transform: translateY(-100%);
   transition: transform 0.3s ease;
 }
+
+.ThemeToggle {
+  position: absolute;
+  right: 0;
+}

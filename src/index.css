@@ -23,3 +23,17 @@ body,
   height: 100%;
   background-color: #000;
 }
+
+body[data-theme="dark"] {
+  --main-background: #1d1d1d;
+  --text-color: #fff;
+  --modal-background: rgb(22, 22, 22);
+  --header-background: rgba(51, 51, 51, 0.8);
+}
+
+body[data-theme="light"] {
+  --main-background: #fff;
+  --text-color: #000;
+  --modal-background: #fff;
+  --header-background: #000;
+}
