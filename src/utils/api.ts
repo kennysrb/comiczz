@@ -1,5 +1,6 @@
 import axios from "axios";
 import { MarvelApiResponse } from "../types/marvelApiTypes";
+import { Comic } from "../types/types";
 
 const publicKey = "826935b16b194edd3c1ddddc70a2f805";
 
@@ -32,5 +33,15 @@ export const fetchComics = async (
       count: 0,
       results: [],
     };
+  }
+};
+
+export const fetchComicById = async (id: number): Promise<Comic | null> => {
+  try {
+    const res = await API.get(`/comics/${id}`);
+    return res.data.data.results[0];
+  } catch (err) {
+    console.error("Failed to fetch comic details", err);
+    return null;
   }
 };

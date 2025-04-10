@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { fetchComics } from "../utils/api";
+import { fetchComicById, fetchComics } from "../utils/api";
 import styles from "./ComicsPage.module.css";
 import { ComicCard } from "../components/ComicCard/ComicCard";
 import { Comic } from "../types/types";
 import Spinner from "../components/Spinner/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ComicModal from "../components/ComicModal/ComicModal";
 export const ComicsPage = ({ format }: { format: string }) => {
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,16 @@ export const ComicsPage = ({ format }: { format: string }) => {
   useEffect(() => {
     loadComics();
   }, [offset, format, loadComics]);
+
+  const [selectedComic, setSelectedComic] = useState<Comic | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleMoreInfo = async (id: number) => {
+    const comic = await fetchComicById(id);
+    if (comic) {
+      setSelectedComic(comic);
+      setModalOpen(true);
+    }
+  };
 
   //UNCOMMENT FOLLOWING CODE FOR CUSTOM INFINTE SCROLL
   //   useEffect(() => {
@@ -88,7 +99,13 @@ export const ComicsPage = ({ format }: { format: string }) => {
       >
         <div className={styles.Grid}>
           {comics.map((comic) => (
-            <ComicCard key={comic.id} comic={comic} />
+            <ComicCard
+              key={comic.id}
+              comic={comic}
+              onMoreInfo={() => {
+                handleMoreInfo(comic.id);
+              }}
+            />
           ))}
         </div>
       </InfiniteScroll>
@@ -101,6 +118,9 @@ export const ComicsPage = ({ format }: { format: string }) => {
             Load More
           </button>
         </div>
+      )}
+      {modalOpen && selectedComic && (
+        <ComicModal comic={selectedComic} onClose={() => setModalOpen(false)} />
       )}
     </div>
   );
