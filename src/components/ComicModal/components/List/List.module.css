@@ -1,12 +1,22 @@
 .ListWrapper {
-  margin: 15px 0;
-}
-.List {
-  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  row-gap: 1px;
+  align-items: center;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.List {
+  margin-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
   padding: 0;
-  margin-top: 5px;
+  list-style: none;
+  max-width: 310px;
+}
+
+.List li {
+  display: inline;
+  margin-right: 10px;
 }

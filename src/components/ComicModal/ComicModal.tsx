@@ -1,8 +1,10 @@
-import { Comic } from "../../types/types";
+import { Comic, Price } from "../../types/types";
 import styles from "./ComicModal.module.css";
 import ComicDetailList from "./components/List/List";
 import RowInfo from "./components/RowInfo/RowInfo";
 import { useEffect } from "react";
+import closeIcon from "../../assets/icons/closeIcon.png";
+import Button from "../Button/Button";
 
 type ComicModalProps = {
   comic: Comic;
@@ -17,24 +19,33 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
     };
   }, []);
 
+  const price =
+    comic.prices.length > 0
+      ? Math.min(...comic.prices.map((p: Price) => p.price))
+      : "N/A";
+
   const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
   return (
     <div className={styles.ModalOverlay} onClick={onClose}>
       <div className={styles.ModalWrapper} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.CloseButton} onClick={onClose}>
-          X
-        </button>
+        <img
+          className={styles.CloseIcon}
+          src={closeIcon}
+          alt={"close"}
+          onClick={onClose}
+        />
         <div className={styles.ModalCover}>
-          <div className={styles.ModalCoverOverlay}></div>
           <img src={thumbnail} alt={comic.title} />
         </div>
         <div className={styles.ModalContent}>
-          <RowInfo label="Title" value={comic.title} />
+          <div className={styles.TitleWrapper}>
+            <p className={styles.Title}>{comic.title}</p>
+          </div>
           <RowInfo
-            label="Release Date"
+            label="Year of release"
             value={comic.dates.find((d) => d.type === "focDate")?.date || "N/A"}
           />
-          <RowInfo label="Format" value={comic.format || "N/A"} />
+          {comic.format && <RowInfo label="Format" value={comic.format} />}
           <RowInfo label="Pages" value={comic.pageCount || "N/A"} />
           {comic.characters.items.length > 0 && (
             <ComicDetailList
@@ -46,6 +57,10 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
             <ComicDetailList label="Creators" items={comic.creators.items} />
           )}
           <RowInfo label="Diamond Code" value={comic.diamondCode || "N/A"} />
+          <p className={styles.Price}>{price}</p>
+        </div>
+        <div className={styles.BtnWrapper}>
+          <Button label="Close" clickHandler={onClose} />
         </div>
       </div>
     </div>

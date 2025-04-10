@@ -11,11 +11,7 @@ const ComicDetailList = ({ label, items }: ComicDetailListProps) => {
       <strong>{label}:</strong>
       <ul className={styles.List}>
         {items.map((item, index) => (
-          <li key={index}>
-            {"role" in item && item.role
-              ? `${item.name} – ${item.role}`
-              : item.name}
-          </li>
+          <li key={index}>{item.name}</li>
         ))}
       </ul>
     </div>

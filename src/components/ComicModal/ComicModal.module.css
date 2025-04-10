@@ -11,13 +11,24 @@
   z-index: 999;
 }
 .ModalWrapper {
-  min-height: 500px;
-  max-width: 700px;
+  display: flex;
+  height: 270px;
+  width: 643px;
   background: rgb(22, 22, 22);
   background-color: var(--modal-background);
-
-  border-radius: 15px;
+  border: 1px solid #1d1d1d;
+  border-radius: 5px;
   position: relative;
+  padding: 12px;
+}
+.CloseIcon {
+  position: absolute;
+  z-index: 3;
+  right: 0.5rem;
+}
+
+.CloseIcon:hover {
+  cursor: pointer;
 }
 
 .CloseButton {
@@ -36,20 +47,10 @@
   align-items: center;
   position: relative;
 }
-.ModalCoverOverlay {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    linear-gradient(15deg, rgb(22, 22, 22) 14.16%, rgba(6, 10, 23, 0) 26.61%),
-    linear-gradient(0deg, rgb(22, 22, 22) 3.91%, rgba(6, 10, 23, 0) 69.26%);
-}
+
 .ModalCover img {
-  width: 100%;
-  max-height: 500px;
+  width: 163px;
+  height: 245px;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -58,6 +59,31 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: space-between;
   color: var(--text-color);
-  padding: 1rem 2.5rem 2.5rem;
+  padding: 1rem 1rem 0 1rem;
+  width: 100%;
+}
+
+.TitleWrapper {
+  width: 100%;
+}
+.Title {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: var(--text-color);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 75%;
+}
+.Price {
+  font-size: 24px;
+  font-weight: bold;
+}
+.BtnWrapper {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
 }

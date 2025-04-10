@@ -1,4 +1,5 @@
 import { Comic, Price } from "../../types/types";
+import Button from "../Button/Button";
 import styles from "./ComicCard.module.css";
 
 type ComicCardProps = {
@@ -20,12 +21,7 @@ export const ComicCard = ({ comic, onMoreInfo }: ComicCardProps) => {
         <p className={styles.Title}>{comic.title}</p>
         <div className={styles.PriceWrapper}>
           <p className={styles.Price}>Price: ${price}</p>
-          <button
-            className={styles.Button}
-            onClick={() => onMoreInfo(comic.id)}
-          >
-            More Info
-          </button>
+          <Button label="More Info" clickHandler={() => onMoreInfo(comic.id)} />
         </div>
       </div>
     </div>
