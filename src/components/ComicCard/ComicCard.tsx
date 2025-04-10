@@ -16,8 +16,8 @@ export const ComicCard = ({ comic, onMoreInfo }: ComicCardProps) => {
   return (
     <div className={styles.Card}>
       <img src={thumbnail} alt={comic.title} />
-      <h4 className={styles.Title}>{comic.title}</h4>
       <div className={styles.PriceWrapper}>
+        <p className={styles.Title}>{comic.title}</p>
         <p className={styles.Price}>Price: ${price}</p>
         <button className={styles.Button} onClick={() => onMoreInfo(comic.id)}>
           More Info

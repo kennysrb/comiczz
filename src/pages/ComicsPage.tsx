@@ -6,6 +6,7 @@ import { Comic } from "../types/types";
 import Spinner from "../components/Spinner/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ComicModal from "../components/ComicModal/ComicModal";
+
 export const ComicsPage = ({ format }: { format: string }) => {
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
