@@ -5,7 +5,7 @@ import RowInfo from "./components/RowInfo/RowInfo";
 import { useEffect } from "react";
 import closeIcon from "../../assets/icons/closeIcon.png";
 import Button from "../Button/Button";
-import { getLowestPrice } from "../../utils/helpers";
+import { getLowestPrice, getYearFromDateString } from "../../utils/helpers";
 
 type ComicModalProps = {
   comic: Comic;
@@ -39,9 +39,12 @@ const ComicModal = ({ comic, onClose }: ComicModalProps) => {
           <div className={styles.TitleWrapper}>
             <p className={styles.Title}>{comic.title}</p>
           </div>
+
           <RowInfo
             label="Year of release"
-            value={comic.dates.find((d) => d.type === "focDate")?.date || "N/A"}
+            value={getYearFromDateString(
+              comic.dates.find((d) => d.type === "focDate")?.date
+            )}
           />
           {comic.format && <RowInfo label="Format" value={comic.format} />}
           <RowInfo label="Pages" value={comic.pageCount || "N/A"} />
