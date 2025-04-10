@@ -1,8 +1,8 @@
 .Breadcrumbs {
   background-color: var(--main-background);
-  padding: 0.5rem 1rem;
+  padding: 1.6rem 15.6rem 0;
   font-size: 0.9rem;
-  color: var(--text-color);
+  color: var(--breadcrumbs-text-color);
 }
 
 .Link:hover {

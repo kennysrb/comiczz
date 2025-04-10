@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
+import logo from "../../assets/images/logo2.png";
 
 type Props = {
   selectedFormat: string;
@@ -37,18 +38,21 @@ export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
 
   return (
     <header className={`${styles.Header} ${!visible ? styles.Hidden : ""}`}>
-      {formats.map((format) => (
-        <button
-          key={format}
-          className={selectedFormat === format ? styles.Active : ""}
-          onClick={() => onSelectFormat(format)}
-        >
-          {format}
+      <img className={styles.Logo} src={logo} alt={"logo"} />
+      <div className={styles.ButtonsWrapper}>
+        {formats.map((format) => (
+          <button
+            key={format}
+            className={selectedFormat === format ? styles.Active : ""}
+            onClick={() => onSelectFormat(format)}
+          >
+            {format}
+          </button>
+        ))}
+        <button onClick={toggleTheme} className={styles.ThemeToggle}>
+          {theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"}
         </button>
-      ))}
-      <button onClick={toggleTheme} className={styles.ThemeToggle}>
-        {theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"}
-      </button>
+      </div>
     </header>
   );
 };

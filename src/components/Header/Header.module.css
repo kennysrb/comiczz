@@ -1,26 +1,37 @@
 .Header {
   display: flex;
-  gap: 1rem;
   padding: 1rem;
-  background-color: #333;
-  opacity: 0.8;
+  padding: 20px 15.6rem;
+  background-color: var(--header-background);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: transform 0.3s ease;
+}
+.Logo {
+  width: 84px;
+  height: 72px;
+}
+
+.ButtonsWrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  gap: 81px;
+  margin-left: 60px;
 }
 
 button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem 1rem;
   font-weight: bold;
   color: #fff;
 }
 
 .Active {
-  border-bottom: 2px solid red;
+  color: #dd2c2c;
 }
 
 .Hidden {
@@ -31,4 +42,6 @@ button {
 .ThemeToggle {
   position: absolute;
   right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }

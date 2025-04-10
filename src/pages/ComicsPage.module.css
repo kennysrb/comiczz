@@ -1,7 +1,7 @@
 .PageWrapper {
   background-color: #000;
   background-color: var(--main-background);
-  padding: 0;
+  padding: 0 15.6rem;
   width: 100%;
   min-height: calc(100vh - 98px);
   position: relative;
