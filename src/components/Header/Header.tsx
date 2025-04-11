@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/images/logo2.png";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 type Props = {
   selectedFormat: string;
   onSelectFormat: (format: string) => void;
@@ -56,7 +57,7 @@ export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
           </button>
         ))}
         <button onClick={toggleTheme} className={styles.ThemeToggle}>
-          {theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"}
+          <FontAwesomeIcon icon={theme === "dark" ? faMoon : faSun} />
         </button>
       </div>
     </header>

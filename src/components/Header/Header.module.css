@@ -57,6 +57,28 @@ button {
   margin-left: auto;
 }
 
+@media (max-width: 1300px) {
+  .Header {
+    padding: 1.6rem 8.5rem 0;
+  }
+  .ButtonsWrapper {
+    gap: 64px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .Header {
+    padding: 1.6rem 5rem 0;
+  }
+}
+@media (max-width: 970px) {
+  .Header {
+    padding: 1.6rem 1rem 0;
+  }
+  .ButtonsWrapper {
+    gap: 64px;
+  }
+}
 @media (max-width: 768px) {
   .Header {
     padding: 20px;

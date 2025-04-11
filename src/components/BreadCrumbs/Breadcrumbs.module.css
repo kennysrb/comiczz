@@ -8,3 +8,19 @@
 .Link:hover {
   cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+  .Breadcrumbs {
+    padding: 1.6rem 8.5rem 0;
+  }
+}
+@media (max-width: 730px) {
+  .Breadcrumbs {
+    padding: 1.6rem 2rem 0;
+  }
+}
+@media (max-width: 523px) {
+  .Grid {
+    justify-content: center;
+  }
+}
