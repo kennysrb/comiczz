@@ -104,15 +104,20 @@ button {
     align-items: flex-start;
     gap: 20px;
     margin-left: 0;
-    width: 100%;
-    display: none;
     padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    opacity: 0.9;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
 
   .ButtonsWrapper.Open {
     display: flex;
+    opacity: 0.9;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .ThemeToggle {
