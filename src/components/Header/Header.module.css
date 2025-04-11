@@ -95,13 +95,20 @@ button {
   }
 
   .ButtonsWrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--header-background);
+    z-index: 999;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
     margin-left: 0;
     width: 100%;
     display: none;
-    margin-top: 1rem;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
   }
 
   .ButtonsWrapper.Open {
