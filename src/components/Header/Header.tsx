@@ -15,6 +15,7 @@ export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
   );
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.body.dataset.theme = theme;
@@ -39,7 +40,12 @@ export const Header = ({ selectedFormat, onSelectFormat }: Props) => {
   return (
     <header className={`${styles.Header} ${!visible ? styles.Hidden : ""}`}>
       <img className={styles.Logo} src={logo} alt={"logo"} />
-      <div className={styles.ButtonsWrapper}>
+      <button className={styles.Burger} onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
+      <div
+        className={`${styles.ButtonsWrapper} ${menuOpen ? styles.Open : ""}`}
+      >
         {formats.map((format) => (
           <button
             key={format}

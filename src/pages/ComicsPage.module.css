@@ -55,3 +55,19 @@
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
+
+@media (max-width: 1200px) {
+  .PageWrapper {
+    padding: 0 8.5rem;
+  }
+}
+@media (max-width: 730px) {
+  .PageWrapper {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 523px) {
+  .Grid {
+    justify-content: center;
+  }
+}

@@ -46,3 +46,49 @@ button {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.Burger {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+
+  .Logo {
+    width: 64px;
+    height: 56px;
+  }
+
+  .Burger {
+    display: block;
+  }
+
+  .ButtonsWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-left: 0;
+    width: 100%;
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .ButtonsWrapper.Open {
+    display: flex;
+  }
+
+  .ThemeToggle {
+    position: static;
+    transform: none;
+    align-self: flex-end;
+  }
+}
